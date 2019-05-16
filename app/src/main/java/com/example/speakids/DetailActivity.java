@@ -3,7 +3,6 @@ package com.example.speakids;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.example.speakids.utils.Actions;
 import com.example.speakids.utils.Animals;

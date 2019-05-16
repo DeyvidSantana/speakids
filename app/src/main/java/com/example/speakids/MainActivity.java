@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         welcome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this,"Welcome Video works!",Toast.LENGTH_LONG).show();
+                startActivity(new Intent(MainActivity.this, Welcome.class));
             }
         });
 
