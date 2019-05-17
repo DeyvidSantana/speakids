@@ -1,8 +1,12 @@
 package com.example.speakids;
 
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.AdapterView.OnItemClickListener;
 
 import com.example.speakids.utils.Actions;
 import com.example.speakids.utils.Animals;
@@ -16,14 +20,33 @@ public class DetailActivity extends AppCompatActivity {
 
     ListView listView;
     CustomListDetailAdapter whatever;
+    MediaPlayer dance, play, run, sing, sleep;
+    String itemName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        String itemName = getIntent().getStringExtra("itemName");
+        itemName = getIntent().getStringExtra("itemName");
 
+        createAdapterBasedOnItemName();
+
+        listView = (ListView) findViewById(R.id.listviewDetail);
+        listView.setAdapter(whatever);
+
+        createMediaPlayerBasedOnAudio();
+
+        listView.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position,
+                                    long id) {
+                startProcessAudio(position);
+            }
+        });
+    }
+
+    public void createAdapterBasedOnItemName(){
         if(itemName.contains("Actions")){
             whatever = new CustomListDetailAdapter(this,
                     Actions.NAME_ARRAY, Actions.INFO_ARRAY, Actions.IMAGE_ARRAY);
@@ -59,8 +82,46 @@ public class DetailActivity extends AppCompatActivity {
                     Seasons.NAME_ARRAY, Seasons.INFO_ARRAY, Seasons.IMAGE_ARRAY);
             getSupportActionBar().setTitle("Seasons");
         }
+    }
 
-        listView = (ListView) findViewById(R.id.listviewDetail);
-        listView.setAdapter(whatever);
+    public void createMediaPlayerBasedOnAudio(){
+        dance = MediaPlayer.create(this,R.raw.dance);
+        play = MediaPlayer.create(this,R.raw.play);
+        /*run = MediaPlayer.create(this,R.raw.run);
+        sing = MediaPlayer.create(this,R.raw.sing);
+        sleep = MediaPlayer.create(this,R.raw.sleep);*/
+    }
+
+    public void startProcessAudio(int position){
+        switch (itemName){
+            case "Actions":
+                String subitemName = Actions.NAME_ARRAY[position];
+                playAudio(subitemName);
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void playAudio(String subitemName){
+        switch (subitemName){
+            case "Dance":
+                dance.start();
+                break;
+            case "Play":
+                play.start();
+                break;
+            /*case "Run":
+                run.start();
+                break;
+            case "Sing":
+                sing.start();
+                break;
+            case "Sleep":
+                sleep.start();
+                break;*/
+            default:
+                break;
+        }
     }
 }
