@@ -87,9 +87,9 @@ public class DetailActivity extends AppCompatActivity {
     public void createMediaPlayerBasedOnAudio(){
         dance = MediaPlayer.create(this,R.raw.dance);
         play = MediaPlayer.create(this,R.raw.play);
-        /*run = MediaPlayer.create(this,R.raw.run);
+        run = MediaPlayer.create(this,R.raw.run);
         sing = MediaPlayer.create(this,R.raw.sing);
-        sleep = MediaPlayer.create(this,R.raw.sleep);*/
+        sleep = MediaPlayer.create(this,R.raw.sleep);
     }
 
     public void startProcessAudio(int position){
@@ -111,7 +111,7 @@ public class DetailActivity extends AppCompatActivity {
             case "Play":
                 play.start();
                 break;
-            /*case "Run":
+            case "Run":
                 run.start();
                 break;
             case "Sing":
@@ -119,7 +119,7 @@ public class DetailActivity extends AppCompatActivity {
                 break;
             case "Sleep":
                 sleep.start();
-                break;*/
+                break;
             default:
                 break;
         }
