@@ -1,5 +1,7 @@
 package com.example.speakids;
 
+import android.arch.lifecycle.Lifecycle;
+import android.arch.lifecycle.OnLifecycleEvent;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +9,8 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.example.speakids.services.BackGroundMusic;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,6 +48,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // It isn't working fine
+        startService(new Intent(MainActivity.this, BackGroundMusic.class));
+
         welcome = (ImageButton) findViewById(R.id.welcome);
         getStarted = (ImageButton) findViewById(R.id.getStarted);
         yourStudies = (ImageButton) findViewById(R.id.yourStudies);
@@ -52,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         welcome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                stopService(new Intent(MainActivity.this, BackGroundMusic.class));
                 startActivity(new Intent(MainActivity.this, Welcome.class));
             }
         });
@@ -66,15 +74,22 @@ public class MainActivity extends AppCompatActivity {
         yourStudies.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this,"Your Studies works!",Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this,"Your Studies works!",
+                        Toast.LENGTH_LONG).show();
             }
         });
 
         aboutUs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this,"About Us works!",Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this,"About Us works!",
+                        Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_START)
+    public void stopBackGroundMusic(){
+        startService(new Intent(MainActivity.this, BackGroundMusic.class));
     }
 }
