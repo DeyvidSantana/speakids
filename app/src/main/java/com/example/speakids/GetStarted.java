@@ -22,9 +22,6 @@ public class GetStarted extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_started);
 
-        // It isn't working fine
-        startService(new Intent(GetStarted.this, BackGroundMusic.class));
-
         CustomListAdapter whatever = new CustomListAdapter(this, MenuGetStarted.NAME_ARRAY,
                 MenuGetStarted.INFO_ARRAY, MenuGetStarted.IMAGE_ARRAY);
         listView = (ListView) findViewById(R.id.listviewID);
@@ -34,7 +31,6 @@ public class GetStarted extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
-                stopService(new Intent(GetStarted.this, BackGroundMusic.class));
 
                 String itemName = MenuGetStarted.NAME_ARRAY[position];
                 startActivity(new Intent(getApplicationContext(),
@@ -43,11 +39,5 @@ public class GetStarted extends AppCompatActivity {
         });
 
         getSupportActionBar().setTitle("Get Started");
-    }
-
-    // It isn't working fine
-    @OnLifecycleEvent(Lifecycle.Event.ON_START)
-    public void stopBackGroundMusic(){
-        stopService(new Intent(GetStarted.this, BackGroundMusic.class));
     }
 }

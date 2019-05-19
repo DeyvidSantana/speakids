@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         getStarted.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                stopService(new Intent(MainActivity.this, BackGroundMusic.class));
                 startActivity(new Intent(MainActivity.this, GetStarted.class));
             }
         });
@@ -88,8 +89,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_START)
+    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     public void stopBackGroundMusic(){
-        startService(new Intent(MainActivity.this, BackGroundMusic.class));
+        stopService(new Intent(MainActivity.this, BackGroundMusic.class));
     }
 }
