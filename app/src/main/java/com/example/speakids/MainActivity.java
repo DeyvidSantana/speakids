@@ -75,8 +75,7 @@ public class MainActivity extends AppCompatActivity {
         yourStudies.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this,"Your Studies works!",
-                        Toast.LENGTH_LONG).show();
+                startActivity(new Intent(MainActivity.this, ActivityQuiz.class));
             }
         });
 

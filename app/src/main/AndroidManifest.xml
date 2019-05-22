@@ -9,11 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Welcome"
-            android:parentActivityName=".MainActivity"></activity>
+        <activity android:name=".ActivityAnswer"></activity>
+        <activity android:name=".ActivityQuiz"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Welcome"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".DetailActivity"
-            android:parentActivityName=".GetStarted"></activity>
+            android:parentActivityName=".GetStarted" />
         <activity
             android:name=".GetStarted"
             android:parentActivityName=".MainActivity" />
@@ -25,7 +29,7 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".services.BackGroundMusic"></service>
+        <service android:name=".services.BackGroundMusic" />
     </application>
 
 </manifest>
