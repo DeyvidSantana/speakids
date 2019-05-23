@@ -18,6 +18,8 @@ public class ActivityAnswer extends AppCompatActivity {
 
         ImageView imgAnswer = (ImageView)findViewById(R.id.imgAnswer);
         TextView answer = (TextView)findViewById(R.id.answer);
+        TextView answerInEnglish = (TextView)findViewById(R.id.answerInEnglish);
+
         Button btnReplyAgain = (Button)findViewById(R.id.btnReplyAgain);
 
         Intent intent = getIntent();
@@ -29,9 +31,11 @@ public class ActivityAnswer extends AppCompatActivity {
             if (acertou) {
                 imgAnswer.setImageResource(R.drawable.ok);
                 answer.setText("Acertou! Pontos: " + points);
+                answerInEnglish.setText("You're right! Points: " + points);
             } else {
                 imgAnswer.setImageResource(R.drawable.error);
                 answer.setText("Errou! Pontos: " + points);
+                answerInEnglish.setText("You missed! Points: " + points);
             }
 
             Thread thread = new Thread(new Runnable() {
@@ -49,7 +53,8 @@ public class ActivityAnswer extends AppCompatActivity {
         }
         else{
             btnReplyAgain.setVisibility(View.VISIBLE);
-            answer.setText("Fez " + points + " pontos!");
+            answer.setText("Você fez " + points + " pontos!");
+            answerInEnglish.setText("You scored " + points + " points!");
 
             if(points >= 3)
                 imgAnswer.setImageResource(R.drawable.happy);

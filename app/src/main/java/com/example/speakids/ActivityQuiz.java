@@ -16,6 +16,7 @@ import java.util.List;
 public class ActivityQuiz extends AppCompatActivity {
 
     TextView question;
+    TextView questionInEnglish;
     RadioButton rbAnswer1, rbAnswer2, rbAnswer3, rbAnswer4;
     RadioGroup rgAnswers;
     int correctAnswer = R.id.rbAnswer1;
@@ -23,10 +24,18 @@ public class ActivityQuiz extends AppCompatActivity {
 
     List<Question> questions = new ArrayList<Question>(){
         {
-            add(new Question("Cantores usam o microfone para:", R.id.rbAnswer2, "Sleep", "Sing", "Run", "Walk"));
-            add(new Question("Qual é o nome do animal de estimação mais amado?", R.id.rbAnswer1, "Dog", "Lion", "Butterfly", "Fis"));
-            add(new Question("Qual a estação do ano representada pelo sol?", R.id.rbAnswer4, "Winter", "Spring", "Autumn", "Summer"));
-            add(new Question("Qual objeto você usa para fazer as anotações da escola?", R.id.rbAnswer3, "Pencil", "Scool", "Notebook", "Pen"));
+            add(new Question("Cantores usam o microfone para:",
+                    "Singers use the microphone to:", R.id.rbAnswer2,
+                    "Sleep", "Sing", "Run", "Walk"));
+            add(new Question("Qual é o nome do animal de estimação mais amado?",
+                    "What is the name of the most beloved pet?", R.id.rbAnswer1,
+                    "Dog", "Lion", "Butterfly", "Fis"));
+            add(new Question("Qual a estação do ano representada pelo sol?",
+                    "What season is represented by the sun?", R.id.rbAnswer4,
+                    "Winter", "Spring", "Autumn", "Summer"));
+            add(new Question("Qual objeto você usa para fazer as anotações da escola?",
+                    "What object do you use to make school notes?",
+                    R.id.rbAnswer3, "Pencil", "Scool", "Notebook", "Pen"));
         }
     };
 
@@ -36,12 +45,15 @@ public class ActivityQuiz extends AppCompatActivity {
         setContentView(R.layout.activity_quiz);
 
         question = (TextView)findViewById(R.id.question);
+        questionInEnglish = (TextView)findViewById(R.id.questionInEnglish);
         rbAnswer1 = (RadioButton)findViewById(R.id.rbAnswer1);
         rbAnswer2 = (RadioButton)findViewById(R.id.rbAnswer2);
         rbAnswer3 = (RadioButton)findViewById(R.id.rbAnswer3);
         rbAnswer4 = (RadioButton)findViewById(R.id.rbAnswer4);
         rgAnswers = (RadioGroup) findViewById(R.id.rgRespostas);
         buildQuestion();
+
+        getSupportActionBar().setTitle("Quiz");
     }
 
     @Override
@@ -67,6 +79,7 @@ public class ActivityQuiz extends AppCompatActivity {
         if(questions.size() > 0) {
             Question q = questions.remove(0);
             question.setText(q.getQuestion());
+            questionInEnglish.setText(q.getQuestionInEnglish());
             List<String> answer = q.getAnswers();
             rbAnswer1.setText(answer.get(0));
             rbAnswer2.setText(answer.get(1));

@@ -1,7 +1,5 @@
 package com.example.speakids;
 
-import android.arch.lifecycle.Lifecycle;
-import android.arch.lifecycle.OnLifecycleEvent;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,7 +8,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 
-import com.example.speakids.services.BackGroundMusic;
 import com.example.speakids.utils.MenuGetStarted;
 
 public class GetStarted extends AppCompatActivity {
