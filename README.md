@@ -1,5 +1,5 @@
-# Speakids Project
-This repository contains a college project called Speakids, an app that aims to assist children in learning the English language. The purpose of the application is only to provide a prototype of what an educational application for children would look like, with some multimedia features such as audio, video, background music and illustrative images. This project is part of the evaluation of two disciplines of the Computer Science course at UNINASSAU: Integrator Topic and Multimedia Systems.
+# Projeto Speakids
+Este repositório contém um projeto de faculdade chamado Speakids, um aplicativo em Android que visa auxiliar as crianças no aprendizado da língua inglesa. O objetivo do aplicativo é apenas fornecer um protótipo de como seria um aplicativo educacional para crianças, com alguns recursos de multimídia, como áudio, vídeo, música de fundo e imagens ilustrativas. Este projeto faz parte da avaliação de duas disciplinas do curso de Ciência da Computação da UNINASSAU: Integrador Tópico e Sistemas Multimídia.
 
-# Developers
+# Desenvolvedores
 Deyvid Santana, Lucas Correia e Pedro Miguel
